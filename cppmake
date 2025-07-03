@@ -1,0 +1,34 @@
+#!/usr/bin/env zsh
+
+# cppmake: create a C++ project folder + .cpp stub
+# Usage: cppmake <project-name>
+
+if (( $# != 1 )); then
+  echo "Usage: cppmake <project-name>"
+  exit 1
+fi
+
+proj="$1"
+dir="./$proj"
+file="${proj}.cpp"
+
+if [[ -e "$dir" ]]; then
+  echo "Error: '$dir' already exists."
+  exit 1
+fi
+
+mkdir -p -- "$dir"
+cat > "${dir}/${file}" <<'EOF'
+//============================================================================
+//  Project:  '"$proj"'
+//  Created:  '"$(date "+%Y-%m-%d")"'
+//============================================================================
+#include <iostream>
+
+int main() {
+    std::cout << "Hello from '"$proj"'!" << std::endl;
+    return 0;
+}
+EOF
+
+echo "Created project '$proj' in $dir/"
