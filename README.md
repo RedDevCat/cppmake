@@ -7,7 +7,7 @@ paste you cppmake file to ~/Scripts/
 
 chmod +x ~/Scripts/cppmake
 
-sudo nano ~/.zshrc: export PATH="$HOME/scripts:$PATH"
+sudo nano ~/.zshrc: export PATH="$HOME/Scripts:$PATH"
 
 source ~/.zshrc
 ```
